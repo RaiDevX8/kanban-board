@@ -1,0 +1,96 @@
+.cardContainer {
+    width: 20rem;
+    height: 7rem;
+    border: 1px solid rgb(214, 213, 213);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    box-shadow: rgba(141, 155, 166, 0.3) 0px 0.0625rem 0.125rem 0px, rgba(60, 64, 67, 0.15) 0px 0.0625rem 0.1875rem 1px;
+    background: white;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 10px;
+  }
+  
+  .cardContainer > * {
+    width: 100%;
+  }
+  
+  .title {
+    font-size: 12px;
+    font-weight: bold;
+    flex-grow: 1;
+  }
+  
+  .cardTitle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  .statusContainer {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  
+  .activity-image {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .cardTags {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .tags {
+    width: max-content;
+    padding: 2px 8px;
+    border-radius: 5px;
+    border: 1px solid silver;
+  }
+  
+  .avatar-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 30px;
+    height: 30px;
+  }
+  
+  .userAvatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .status-indicator {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    border: 2px solid #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+  
+  .status-indicator.available {
+    background-color: #28a745;
+  }
+  
+  .status-indicator.unavailable {
+    background-color: #dc3545;
+  }
+  

@@ -1,0 +1,53 @@
+.activity-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 8px;
+    width: 19rem; 
+  }
+  
+  .activity-image {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
+  .activity-text {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
+    margin-left: 10px;
+    flex-grow: 1;
+  }
+  
+  .activity-name {
+    font-size: 14px;
+    font-family: sans-serif;
+    font-weight: bolder;
+  }
+  
+  .activity-count {
+    font-size: 14px;
+    font-weight: 400;
+  }
+  
+  .activity-actions {
+    display: flex;
+    gap: 8px;
+    border: none; 
+  }
+  
+  .activity-actions button {
+    border: none;  
+    padding: 0;    
+    background-color: transparent; 
+    cursor: pointer; 
+  }
+  
+  .more-button {
+    background-color: transparent;
+  }
+  
