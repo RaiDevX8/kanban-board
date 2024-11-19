@@ -1,13 +1,5 @@
-.app {
-  display: flex;
-  background-color: #f4f6fa;
-  flex-direction: column;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.kanban-board-container {
-  flex: 1;
-  padding: 20px;
-  overflow-y: auto;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
