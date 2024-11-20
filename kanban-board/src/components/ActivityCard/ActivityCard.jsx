@@ -16,20 +16,11 @@ import add from "../../assets/more/add.svg";
 import more from "../../assets/more/more.svg";
 import Person from "../../assets/image.png";
 
-const getRandomColor = () => {
-  const letters = '0123456789ABCDEF';
-  let color = '#';
-  for (let i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-};
+
 
 const ActivityCard = ({ activity, count }) => {
   let activityImage;
-  const randomColor = getRandomColor();  
 
-  // Mapping activity and priority to images
   switch (activity.toLowerCase()) {
     case "backlog":
       activityImage = BacklogImage;
@@ -62,15 +53,14 @@ const ActivityCard = ({ activity, count }) => {
       activityImage = Pno;
       break;
     default:
-      activityImage = Person;  // Default case if no match
+      activityImage = Person;  
       break;
   }
 
   return (
     <div className="activity-card">
-      {/* If it's a user-related activity, show random color for initials */}
       {activityImage === Person ? (
-        <div className="activity-avatar" style={{ backgroundColor: randomColor }}>
+        <div className="activity-avatar" style={{ backgroundColor: 'green' }}>
           {activity.slice(0, 2).toUpperCase()} 
         </div>
       ) : (

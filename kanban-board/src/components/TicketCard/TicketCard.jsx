@@ -87,7 +87,7 @@ const TicketCard = ({ ticket, users ,group}) => {
             ) : (
               <div 
                 className="userAvatar"
-                style={{ backgroundColor: getRandomColor(), display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+                style={{ backgroundColor: 'green',color:'white', display: 'flex', justifyContent: 'center', alignItems: 'center' }}
               >
                 {assignedUser.name.slice(0, 2).toUpperCase()} 
               </div>
