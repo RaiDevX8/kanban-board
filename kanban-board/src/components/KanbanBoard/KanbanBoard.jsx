@@ -82,22 +82,44 @@ const KanbanBoard = ({ grouping, sortOrder }) => {
       }));
     } else if (grouping === 'priority') {
       const priorityGroups = {
+        'No Priority': [],
+        Urgent: [],
         High: [],
         Medium: [],
         Low: [],
       };
 
       tickets.forEach((ticket) => {
-        if (ticket.priority >= 3) {
-          priorityGroups['High'].push(ticket);
-        } else if (ticket.priority === 2) {
-          priorityGroups['Medium'].push(ticket);
-        } else {
-          priorityGroups['Low'].push(ticket);
+        switch (ticket.priority) {
+          case 4:
+            priorityGroups['Urgent'].push(ticket);
+            break;
+          case 3:
+            priorityGroups['High'].push(ticket);
+            break;
+          case 2:
+            priorityGroups['Medium'].push(ticket);
+            break;
+          case 1:
+            priorityGroups['Low'].push(ticket);
+            break;
+          case 0:
+            priorityGroups['No Priority'].push(ticket);
+            break;
+          default:
+            priorityGroups['No Priority'].push(ticket);
         }
       });
 
-      return Object.keys(priorityGroups).map((key) => ({
+      const orderedGroups = [
+        'No Priority',
+        'Urgent',
+        'High',
+        'Medium',
+        'Low',
+      ];
+
+      return orderedGroups.map((key) => ({
         title: key,
         count: priorityGroups[key].length,
         items: sortTickets(priorityGroups[key]),
@@ -125,7 +147,6 @@ const KanbanBoard = ({ grouping, sortOrder }) => {
               activity={group.title}
               count={group.count}
               priority={group.items[0]?.priority} 
-              
             />
             <div className="ticket-list">
               {group.items.map((ticket) => (

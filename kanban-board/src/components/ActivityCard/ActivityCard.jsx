@@ -14,8 +14,8 @@ import Urg from "../../assets/pUrg.svg";
 import Pno from "../../assets/pNo.svg";
 import add from "../../assets/more/add.svg";
 import more from "../../assets/more/more.svg";
-import Person from "../../assets/image.png"
-// Function to generate a random color
+import Person from "../../assets/image.png";
+
 const getRandomColor = () => {
   const letters = '0123456789ABCDEF';
   let color = '#';
@@ -27,8 +27,9 @@ const getRandomColor = () => {
 
 const ActivityCard = ({ activity, count }) => {
   let activityImage;
-  const randomColor = getRandomColor();  // Generate a random color for the avatar
-  
+  const randomColor = getRandomColor();  
+
+  // Mapping activity and priority to images
   switch (activity.toLowerCase()) {
     case "backlog":
       activityImage = BacklogImage;
@@ -61,15 +62,16 @@ const ActivityCard = ({ activity, count }) => {
       activityImage = Pno;
       break;
     default:
-      activityImage = Person;  // Use default person image if no match
+      activityImage = Person;  // Default case if no match
       break;
   }
 
   return (
     <div className="activity-card">
+      {/* If it's a user-related activity, show random color for initials */}
       {activityImage === Person ? (
         <div className="activity-avatar" style={{ backgroundColor: randomColor }}>
-          {activity.slice(0, 2).toUpperCase()} {/* Display first two letters of activity */}
+          {activity.slice(0, 2).toUpperCase()} 
         </div>
       ) : (
         <img src={activityImage} alt={activity} className="activity-image" />
