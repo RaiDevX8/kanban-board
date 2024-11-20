@@ -10,8 +10,7 @@
   display: grid;
 grid-template-columns: 1fr;
 gap: 2rem;  justify-items: center; 
-margin-top: 20px;
-
+margin-top: 5rem;
 }
 
 .kanban-column {
