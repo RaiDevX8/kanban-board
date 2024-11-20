@@ -13,8 +13,18 @@ import DoneImage from "../../assets/status/Done.svg";
 import InProgressImage from "../../assets/status/in-progress.svg";
 import TodoImage from "../../assets/status/To-do.svg";
 
-const TicketCard = ({ ticket, users }) => {
+const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
+
+const TicketCard = ({ ticket, users ,group}) => {
   const assignedUser = users.find((user) => user.id === ticket.userId);
+  
   const getPriorityImage = (priority) => {
     switch (priority) {
       case 4:
@@ -34,8 +44,7 @@ const TicketCard = ({ ticket, users }) => {
   let activityImage;
 
   switch (ticket.status) {
-    case "Backlog": 
-        
+    case "Backlog":
       activityImage = BacklogImage;
       break;
     case "cancel":
@@ -59,33 +68,54 @@ const TicketCard = ({ ticket, users }) => {
 
   return (
     <div className="cardContainer flex-gap-10" style={{ gap: '5px' }}>
+
+     <div className="inside-container">
       <div className="cardHeading flex-sb">
         <span className="color-grey" style={{ textTransform: 'uppercase' }}>
           {ticket.id}
         </span>
       </div>
-      <div className="cardTitle flex-sb">
-        {ticket?.status  && (
-          <div className="statusContainer">
-            <img className="activity-image" src={activityImage} alt="Status" />
-          </div>
-        )}
-        <p className="title">{ticket.title}</p>
-      </div>
+     
       {assignedUser && (
         <div className="avatar-container">
-          <img
-            className="userAvatar"
-            src={assignedUser.avatar || Person}
-            alt="User Avatar"
-          />
+          {assignedUser.avatar ? (
+            <img
+              className="userAvatar"
+              src={assignedUser.avatar}
+              alt="User Avatar"
+            />
+          ) : (
+            <div 
+              className="userAvatar"
+              style={{ backgroundColor: getRandomColor(), display: 'flex', justifyContent: 'center', alignItems: 'center' }}
+            >
+              {assignedUser.name.slice(0, 2).toUpperCase()} 
+            </div>
+          )}
+          
           <div
-            className={`status-indicator ${
-              assignedUser.available ? 'available' : 'unavailable'
-            }`}
+            className={`status-indicator ${assignedUser.available ? 'available' : 'unavailable'}`}
           ></div>
         </div>
       )}
+
+
+     </div>
+     <div className="cardTitle flex-sb">
+     {group === 'user' ? (
+  ticket?.status ? (
+    <div className="statusContainer">
+      <img className="activity-image" src={activityImage} alt="Status" />
+      <p className="title">{ticket.title}</p>
+    </div>
+  ) : (
+    <p className="title">{ticket.title}</p>
+  )
+) : (
+  <p className="title">{ticket.title}</p>
+)}
+
+      </div>
       <div className="cardTags">
         <img
           src={priorityImage}

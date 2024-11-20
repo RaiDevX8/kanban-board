@@ -125,10 +125,11 @@ const KanbanBoard = ({ grouping, sortOrder }) => {
               activity={group.title}
               count={group.count}
               priority={group.items[0]?.priority} 
+              
             />
             <div className="ticket-list">
               {group.items.map((ticket) => (
-                <TicketCard key={ticket.id} ticket={ticket} users={users} />
+                <TicketCard key={ticket.id} ticket={ticket} users={users} group={grouping} />
               ))}
             </div>
           </div>

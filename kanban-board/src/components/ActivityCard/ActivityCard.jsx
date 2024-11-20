@@ -1,4 +1,5 @@
-import "./ActivityCard.css"; 
+import React from "react";
+import "./ActivityCard.css";
 
 import BacklogImage from "../../assets/status/Backlog.svg";
 import CancelledImage from "../../assets/status/Cancelled.svg";
@@ -11,12 +12,23 @@ import Low from "../../assets/pLow.svg";
 import Med from "../../assets/pMed.svg";
 import Urg from "../../assets/pUrg.svg";
 import Pno from "../../assets/pNo.svg";
+import add from "../../assets/more/add.svg";
+import more from "../../assets/more/more.svg";
 import Person from "../../assets/image.png"
-import add from "../../assets/more/add.svg"
-import more from "../../assets/more/more.svg"
+// Function to generate a random color
+const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
 
 const ActivityCard = ({ activity, count }) => {
   let activityImage;
+  const randomColor = getRandomColor();  // Generate a random color for the avatar
+  
   switch (activity.toLowerCase()) {
     case "backlog":
       activityImage = BacklogImage;
@@ -33,33 +45,36 @@ const ActivityCard = ({ activity, count }) => {
     case "todo":
       activityImage = TodoImage;
       break;
-      case "high":
-        activityImage = High;
-        break;
-      case "medium":
-        activityImage = Med;
-        break;
-      case "low":
-        activityImage = Low;
-        break;
-        case "urgent":
-            activityImage = Urg;
-            break;
-            case "no priority":
-                activityImage = Pno;
-                break;
-      
+    case "high":
+      activityImage = High;
+      break;
+    case "medium":
+      activityImage = Med;
+      break;
+    case "low":
+      activityImage = Low;
+      break;
+    case "urgent":
+      activityImage = Urg;
+      break;
+    case "no priority":
+      activityImage = Pno;
+      break;
     default:
-      activityImage = Person; 
+      activityImage = Person;  // Use default person image if no match
       break;
   }
 
-  
-
   return (
     <div className="activity-card">
-          <img src={activityImage} alt={activity} className="activity-image" />
-  
+      {activityImage === Person ? (
+        <div className="activity-avatar" style={{ backgroundColor: randomColor }}>
+          {activity.slice(0, 2).toUpperCase()} {/* Display first two letters of activity */}
+        </div>
+      ) : (
+        <img src={activityImage} alt={activity} className="activity-image" />
+      )}
+
       <div className="activity-text">
         <span className="activity-name">{activity}</span>
         <span className="activity-count">{count}</span>
@@ -67,7 +82,7 @@ const ActivityCard = ({ activity, count }) => {
 
       <div className="activity-actions">
         <button className="add-button"><img src={add} alt="add" /></button>
-        <button className="more-button"><img src={more} alt="add" /></button>
+        <button className="more-button"><img src={more} alt="more" /></button>
       </div>
     </div>
   );

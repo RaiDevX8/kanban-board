@@ -14,7 +14,7 @@ function App() {
     localStorage.setItem('grouping', grouping);
     localStorage.setItem('sortOrder', sortOrder);
   }, [grouping, sortOrder]);
-
+    
   return (
     <div className="app">
       <NavBar
