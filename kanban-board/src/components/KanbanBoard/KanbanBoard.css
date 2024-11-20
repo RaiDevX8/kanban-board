@@ -1,7 +1,7 @@
 .kanban-board-container {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  background-color: #F4F6FA;
   padding: 0 10px;
   overflow: hidden;
 }
@@ -10,6 +10,7 @@
   display: grid;
 grid-template-columns: 1fr;
 gap: 2rem;  justify-items: center; 
+margin-top: 20px;
 
 }
 

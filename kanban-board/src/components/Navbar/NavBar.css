@@ -2,9 +2,14 @@
     display: flex;
     align-items: center;
     padding: 10px;
+    justify-content: start;
     color: black;
+  
     background-color: white;
     position: relative;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
   }
   
   .dropdown-btn {
